@@ -142,6 +142,8 @@ MonoBehaviour:
   MinionTypeData: {fileID: 11400000, guid: 361214a64bce8f34992eb71fbc85356b, type: 2}
   LastName: Smith
   FirstName: Peter
+  MyMoveGoal: {fileID: 0}
+  MinionState: 0
 --- !u!114 &114550682664493722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,11 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0179bcdc7a3c174c92084f200a497eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartNode: {fileID: 0}
-  EndNode: {fileID: 0}
   moveSpeed: 0.04
-  currentDestination: {x: 0, y: 0, z: 0}
-  destinationReachedThreshold: 0.05
 --- !u!136 &136630917189655510
 CapsuleCollider:
   m_ObjectHideFlags: 1

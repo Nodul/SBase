@@ -13,11 +13,11 @@ namespace Pathfinding
         private void Awake()
         {
             FindNeighbors(neighbors);
-            if (this.GetComponent<Tile>().Wall != null)
-            {
-                Blocked = true;
-               // this.GetComponentInChildren<TextMesh>().text = "";
-            }
+            //if (this.GetComponent<Tile>().Wall != null)
+            //{
+            //    Blocked = true;
+            //   // this.GetComponentInChildren<TextMesh>().text = "";
+            //}
         }
 
         public void FindNeighbors(List<Node> _neighbors)
@@ -45,7 +45,12 @@ namespace Pathfinding
           
             */
         }
-      
+
+        private void OnMouseDown()
+        {
+            MinionManager.Instance.MoveAllMinionsTo(this);
+        }
     }
+
 }
 

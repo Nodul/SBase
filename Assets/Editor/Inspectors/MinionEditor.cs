@@ -12,10 +12,21 @@ public class MinionEditor : Editor {
     {
         DrawDefaultInspector();
 
+        if(GUILayout.Button("Force move"))
+        {
+            GiveMoveOrderInEditor();
+        }
         if(GUILayout.Button("Update minion"))
         {
             UpdateMinionInEditor();
         }
+        
+    }
+
+    private void GiveMoveOrderInEditor()
+    {
+        Minion m = (Minion)target;
+        m.GiveMoveOrder();
     }
 
     private void UpdateMinionInEditor()
@@ -23,4 +34,5 @@ public class MinionEditor : Editor {
         Minion m = (Minion)target;
         m.UpdateMinion();
     }
+
 }

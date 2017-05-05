@@ -4,19 +4,26 @@
 Issues
 =====
 - Shadows work perfectly fine [Sun->Light->ShadowType->Hardshadows], but they don't make sense to use with a directional light since the game takes places mostly indoors. Disabled them for now.
-
+- If minions touch doing movement, they stutter a bit and float off. 
+- AHHH, I know why BFS gives a bit roundabout results: it treats diagonal edges the same as cardinal edges, even though diagonal are a bit longer. I'll need to use Dijkstra or A* if I want to find truly shortest paths
 
 =====
 TODO
 =====
-- Dijkstra and A* pathfinding 
-- States for minions
-- GUI for issuing orders
-- Better integration of walls and tiles
+- Dijkstra and A* pathfinding [Need priority queue first, I'll need to implement it myself unfortunately, because C# has no default PriorityQueue data structure]
+- To actually make a gui for minions I'd need to create a JobManager first, then create jobs, like build doors, mine out DirtWall etc. You mostly won't be able to move the minions directly.
 
 =====
 Changelog
 =====
+
+r2
+Added:
+-States for minions [only move and idle have functionality now]
+-GUI for issuing orders [LMB on Tile will order all minions to move there]. To make more GUI stuff I need a JobManager to handle it as indirectly as I want it to be
+-Better integration of walls and tiles [tiles check for Wall at Awake(), and feed Blocked status to Node sibling]
+Fixed:
+-BFS respects blocked tiles better, returns empty Queues in such cases and sends a debug message
 
 r1
 Added:

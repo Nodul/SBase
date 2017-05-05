@@ -126,6 +126,7 @@
     <Compile Include="Assets\Editor\Inspectors\MapManagerEditor.cs" />
     <Compile Include="Assets\Editor\Inspectors\MinionEditor.cs" />
     <Compile Include="Assets\Editor\Inspectors\MinionManagerEditor.cs" />
+    <Compile Include="Assets\Editor\Inspectors\MinionMovementControlEditor.cs" />
     <Compile Include="Assets\Editor\Inspectors\TileEditor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

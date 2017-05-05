@@ -8,12 +8,12 @@ namespace Pathfinding
     public static class BFS
     {
         /// <summary>
-        /// Find path to endNode. Uses early exit
+        /// Gives back dictionary of nodes, basically all pathways to startNode
         /// </summary>
         /// <param name="startNode"></param>
         /// <param name="endNode"></param>
         /// <returns></returns>
-        public static Queue<Node> BFSPath(Node startNode, Node endNode)
+        public static Dictionary<Node,Node> BFSAlgo(Node startNode, Node endNode, bool earlyExit = true)
         {
             int steps = 0;
             Queue<Node> frontier = new Queue<Node>();
@@ -27,7 +27,7 @@ namespace Pathfinding
 
                 Node current = frontier.Dequeue();
 
-                if (current == endNode) break; // early exit, if we find what we want
+                if (earlyExit && current == endNode) break; // early exit, if we find what we want
 
                 // Handle neighbors (if any)
                 foreach (Node node in current.neighbors)
@@ -43,19 +43,41 @@ namespace Pathfinding
 
             }// end While
 
-             // Reconstructing the path
-            Node currentNode = endNode;
-            Queue<Node> path = new Queue<Node>();
-            path.Enqueue(currentNode);
+            return cameFrom;
+        }
 
-            while (currentNode != startNode)
+        /// <summary>
+        /// Find path to endNode from startNode. 
+        /// </summary>
+        /// <param name="startNode"></param>
+        /// <param name="endNode"></param>
+        /// <returns></returns>
+        public static Queue<Node> BFSPath(Node startNode, Node endNode)
+        {
+            
+            if (!endNode.Blocked) // So you won't even try to access inaccesible tiles
             {
-                currentNode = cameFrom[currentNode];
+                Dictionary<Node, Node> cameFrom = BFSAlgo(startNode, endNode);
+                // Reconstructing the path
+                Node currentNode = endNode;
+                Queue<Node> path = new Queue<Node>();
                 path.Enqueue(currentNode);
+
+                while (currentNode != startNode)
+                {
+                    currentNode = cameFrom[currentNode];
+                    path.Enqueue(currentNode);
+                }
+                path = new Queue<Node>(path.Reverse());
+                path.Enqueue(endNode);
+
+                return path;
             }
-            path = new Queue<Node>(path.Reverse());
-            path.Enqueue(endNode);
-            return path;
+            else
+            {
+                return new Queue<Node>(); //new empty Queue, since you cannot reach a blocked end node
+            }
+
         }
 
     }

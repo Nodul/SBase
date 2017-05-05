@@ -41,4 +41,13 @@ public class MinionManager : MonoBehaviour {
             m.UpdateMinion();
         }
     }
+
+    public void MoveAllMinionsTo(Pathfinding.Node endNode)
+    {
+        foreach(Minion m in Minions)
+        {
+            m.MyMoveGoal = endNode;
+            m.GiveMoveOrder();
+        }
+    }
 }
