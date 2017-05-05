@@ -1,5 +1,9 @@
 ﻿SBase Changelog
 
+Controls:
+WSAD/Arrow Keys - Move camera
+LBM on tile - Moves all minions to that tile
+
 =====
 Issues
 =====
