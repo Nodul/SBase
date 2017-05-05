@@ -1,0 +1,29 @@
+﻿SBase Changelog
+
+=====
+Issues
+=====
+- Shadows work perfectly fine [Sun->Light->ShadowType->Hardshadows], but they don't make sense to use with a directional light since the game takes places mostly indoors. Disabled them for now.
+
+
+=====
+TODO
+=====
+- Dijkstra and A* pathfinding 
+- States for minions
+- GUI for issuing orders
+- Better integration of walls and tiles
+
+=====
+Changelog
+=====
+
+r1
+Added:
+-scene setup, 
+-camera controls, 
+-tiles, tile manager, tiledata
+-editor scripts, 
+-minion, minion manager, minion data
+-some basic, homemade graphical assets 
+-BSF pathfinding!
